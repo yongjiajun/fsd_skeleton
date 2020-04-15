@@ -2,7 +2,7 @@
 
 This is a skeleton repository for the autonomous code of a driverless FS race car. This README contains some information to get you started.
 
-The use of **Ubuntu 16.04 and ROS Kinetic** is assumed everywhere on this repository.
+The use of **Ubuntu 18.04 and ROS Melodic** is assumed everywhere on this repository.
 
 This repository contains a framework for the architecture of an autonomous FS race car, with basic dummy nodes to illustrate how to organise code. Some helpful tools are also included.
 
@@ -59,51 +59,49 @@ Once running `update_dependencies`, some aliases for commands will be added. Res
 Look at`fsd_aliases` to see full list, or add more custom aliases.
 - - - -
 
-# Setting up the Workspace
+# Combine FSSIM with simple FSD skeleton Framework and drive autonomously
+**0 Make sure that [FSSIM](https://github.com/yongjiajun/FSSIM) is installed**
+
 **1 Clone the repository:**
 
-```
+```bash
 cd ~
-git clone git@github.com:AMZ-Driverless/fsd_skeleton.git
+git clone https://github.com/yongjiajun/fsd_skeleton.git
 ```
 **2 Install dependencies**
-```
+
+```bash
 cd ~/fsd_skeleton
 ./update_dependencies.sh
 ```
 
-**3 Build workspace**
-```
-cd ~/fsd_skeleton
-catkin build
+**3 Source [FSSIM](https://github.com/yongjiajun/FSSIM) and build workspace**
+
+```bash
+source ../my_ws_name/devel/setup.bash
+catkin_make -j1
 ```
 
 **4 Source environment**
 
-Assuming you've run `./update_dependencies.sh` succesfully and restarted the terminal.
-```
-FSD_source
-```
-Else,
-```
-cd ~/fsd_skeleton
-source fsd_environment.sh
+```bash
+source devel/setup.bash
 ```
 
-**5 Test setup**
+**5 Start simulation**
+
 ```
 roslaunch fsd_common_meta trackdrive.launch
 ```
-in new terminal
-```
-rqt_graph
-```
-You should see all the nodes int the pipeline running
-- - - -
+Uncheck and check the boxes to make sure the FSSIM track,` RobotModel` and other stuff is rendered.
 
-# Run the workspace with FSSIM
-* see https://github.com/AMZ-Driverless/fssim#combine-it-with-simple-fsd-skeleton-framework-and-drive-a-lap
+When `Sending RES GO` is shown, open a new terminal and go to the `fsd_skeleton` folder.
 
+```
+source devel/setup.bash
+roslaunch control_meta trackdrive.launch
+```
+The car should begin driving autonomously.
 # Conventions
 - - - -
 ## ROS naming conventions
