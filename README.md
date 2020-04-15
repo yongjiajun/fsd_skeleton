@@ -59,7 +59,7 @@ Once running `update_dependencies`, some aliases for commands will be added. Res
 Look at`fsd_aliases` to see full list, or add more custom aliases.
 - - - -
 
-# Setting up the Workspace
+# Combine FSSIM with simple FSD skeleton Framework and drive autonomously
 **0 Make sure that [FSSIM](https://github.com/yongjiajun/FSSIM) is installed**
 
 **1 Clone the repository:**
@@ -75,7 +75,7 @@ cd ~/fsd_skeleton
 ./update_dependencies.sh
 ```
 
-**3 Source [FSSIM](https://github.com/yongjiajun/FSSIM) and build workspace
+**3 Source [FSSIM](https://github.com/yongjiajun/FSSIM) and build workspace**
 
 ```bash
 source ../my_ws_name/devel/setup.bash
@@ -102,11 +102,6 @@ source devel/setup.bash
 roslaunch control_meta trackdrive.launch
 ```
 The car should begin driving autonomously.
-- - - -
-
-# Run the workspace with FSSIM
-* see https://github.com/yongjiajun/fssim#combine-it-with-simple-fsd-skeleton-framework-and-drive-a-lap
-
 # Conventions
 - - - -
 ## ROS naming conventions
